@@ -575,35 +575,6 @@ class TaskClosure(_common.FlyteIdlEntity):
         return cls(compiled_task=CompiledTask.from_flyte_idl(pb2_object.compiled_task))
 
 
-class CompiledTask(_common.FlyteIdlEntity):
-    def __init__(self, template):
-        """
-        :param TaskTemplate template:
-        """
-        self._template = template
-
-    @property
-    def template(self):
-        """
-        :rtype: TaskTemplate
-        """
-        return self._template
-
-    def to_flyte_idl(self):
-        """
-        :rtype: flyteidl.core.compiler_pb2.CompiledTask
-        """
-        return _compiler.CompiledTask(template=self.template.to_flyte_idl())
-
-    @classmethod
-    def from_flyte_idl(cls, pb2_object):
-        """
-        :param flyteidl.core.compiler_pb2.CompiledTask pb2_object:
-        :rtype: CompiledTask
-        """
-        return cls(template=TaskTemplate.from_flyte_idl(pb2_object.template))
-
-
 class SparkJob(_common.FlyteIdlEntity):
     def __init__(
         self,
