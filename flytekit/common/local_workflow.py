@@ -16,7 +16,7 @@ from flytekit.configuration import internal as _internal_config
 from flytekit.models import common as _common_models
 from flytekit.models import interface as _interface_models
 from flytekit.models import literals as _literal_models
-from flytekit.models import schedule as _schedule_models
+from flytekit.models.admin import schedule as _schedule_models
 from flytekit.models.core import identifier as _identifier_model
 from flytekit.models.core import workflow as _workflow_models
 
@@ -257,7 +257,7 @@ class SdkRunnableWorkflow(SdkWorkflow):
         This method will create a launch plan object that can execute this workflow.
         :param dict[Text,flytekit.common.promise.Input] default_inputs:
         :param dict[Text,T] fixed_inputs:
-        :param flytekit.models.schedule.Schedule schedule: A schedule on which to execute this launch plan.
+        :param flytekit.models.admin.schedule.Schedule schedule: A schedule on which to execute this launch plan.
         :param Text role: Deprecated. Use assumable_iam_role instead.
         :param list[flytekit.models.common.Notification] notifications: A list of notifications to enact by default for
         this launch plan.

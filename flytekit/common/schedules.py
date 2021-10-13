@@ -5,7 +5,7 @@ import croniter as _croniter
 
 from flytekit.common import sdk_bases as _sdk_bases
 from flytekit.common.exceptions import user as _user_exceptions
-from flytekit.models import schedule as _schedule_models
+from flytekit.models.admin import schedule as _schedule_models
 
 
 class _ExtendedSchedule(_schedule_models.Schedule):
@@ -128,7 +128,7 @@ class CronSchedule(_ExtendedSchedule, metaclass=_sdk_bases.ExtendedSdkType):
     @classmethod
     def promote_from_model(cls, base_model):
         """
-        :param flytekit.models.schedule.Schedule base_model:
+        :param flytekit.models.admin.schedule.Schedule base_model:
         :rtype: CronSchedule
         """
         return cls(
@@ -151,7 +151,7 @@ class FixedRate(_ExtendedSchedule, metaclass=_sdk_bases.ExtendedSdkType):
     def _translate_duration(duration):
         """
         :param datetime.timedelta duration: timedelta between runs
-        :rtype: flytekit.models.schedule.Schedule.FixedRate
+        :rtype: flytekit.models.admin.schedule.Schedule.FixedRate
         """
         _SECONDS_TO_MINUTES = 60
         _SECONDS_TO_HOURS = _SECONDS_TO_MINUTES * 60
@@ -182,7 +182,7 @@ class FixedRate(_ExtendedSchedule, metaclass=_sdk_bases.ExtendedSdkType):
     @classmethod
     def promote_from_model(cls, base_model):
         """
-        :param flytekit.models.schedule.Schedule base_model:
+        :param flytekit.models.admin.schedule.Schedule base_model:
         :rtype: FixedRate
         """
         if base_model.rate.unit == _schedule_models.Schedule.FixedRateUnit.DAY:

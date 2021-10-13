@@ -3,7 +3,7 @@ from flyteidl.admin import launch_plan_pb2 as _launch_plan
 from flytekit.models import common as _common
 from flytekit.models import interface as _interface
 from flytekit.models import literals as _literals
-from flytekit.models import schedule as _schedule
+from flytekit.models.admin import schedule as _schedule
 from flytekit.models.core import identifier as _identifier
 
 
@@ -11,7 +11,7 @@ class LaunchPlanMetadata(_common.FlyteIdlEntity):
     def __init__(self, schedule, notifications):
         """
 
-        :param flytekit.models.schedule.Schedule schedule: Schedule to execute the Launch Plan
+        :param flytekit.models.admin.schedule.Schedule schedule: Schedule to execute the Launch Plan
         :param list[flytekit.models.common.Notification] notifications: List of notifications based on
             execution status transitions
         """
@@ -22,7 +22,7 @@ class LaunchPlanMetadata(_common.FlyteIdlEntity):
     def schedule(self):
         """
         Schedule to execute the Launch Plan
-        :rtype: flytekit.models.schedule.Schedule
+        :rtype: flytekit.models.admin.schedule.Schedule
         """
         return self._schedule
 

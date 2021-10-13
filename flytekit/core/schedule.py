@@ -9,7 +9,7 @@ import re as _re
 
 import croniter as _croniter
 
-from flytekit.models import schedule as _schedule_models
+from flytekit.models.admin import schedule as _schedule_models
 
 
 # Duplicates flytekit.common.schedules.Schedule to avoid using the ExtendedSdkType metaclass.
@@ -170,7 +170,7 @@ class FixedRate(_schedule_models.Schedule):
     def _translate_duration(duration: datetime.timedelta):
         """
         :param datetime.timedelta duration: timedelta between runs
-        :rtype: flytekit.models.schedule.Schedule.FixedRate
+        :rtype: flytekit.models.admin.schedule.Schedule.FixedRate
         """
         _SECONDS_TO_MINUTES = 60
         _SECONDS_TO_HOURS = _SECONDS_TO_MINUTES * 60
