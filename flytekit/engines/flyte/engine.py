@@ -120,7 +120,7 @@ class FlyteEngineFactory(_common_engine.BaseExecutionEngineFactory):
         """
         Queries Admin for an existing Admin task
         :param flytekit.models.core.identifier.Identifier task_id:
-        :rtype: flytekit.models.task.Task
+        :rtype: flytekit.models.admin.tasks.Task
         """
         return _FlyteClientManager(
             _platform_config.URL.get(), insecure=_platform_config.INSECURE.get()
@@ -134,7 +134,7 @@ class FlyteEngineFactory(_common_engine.BaseExecutionEngineFactory):
         """
         Fetches the latest task
         :param flytekit.models.common.NamedEntityIdentifier named_task: NamedEntityIdentifier to fetch
-        :rtype: flytekit.models.task.Task
+        :rtype: flytekit.models.admin.tasks.Task
         """
         task_list, _ = _FlyteClientManager(
             _platform_config.URL.get(), insecure=_platform_config.INSECURE.get()

@@ -64,7 +64,7 @@ class SynchronousFlyteClient(_RawSynchronousFlyteClient):
             remains identical, calling this method multiple times will result in success.
 
         :param flytekit.models.core.identifier.Identifier task_identifer: The identifier for this task.
-        :param flytekit.models.task.TaskSpec task_spec: This is the actual definition of the task that
+        :param flytekit.models.admin.tasks.TaskSpec task_spec: This is the actual definition of the task that
             should be created.
         :raises flytekit.common.exceptions.user.FlyteEntityAlreadyExistsException: If an identical version of the
             task is found, this exception is raised.  The client might choose to ignore this exception because the
@@ -142,7 +142,7 @@ class SynchronousFlyteClient(_RawSynchronousFlyteClient):
             the query.  If the filter is not supported, an exception will be raised.
         :param flytekit.models.admin.common.Sort sort_by: [Optional] If provided, the results will be sorted.
         :raises: TODO
-        :rtype: list[flytekit.models.task.Task], Text
+        :rtype: list[flytekit.models.admin.tasks.Task], Text
         """
         task_list = super(SynchronousFlyteClient, self).list_tasks_paginated(
             resource_list_request=_common_pb2.ResourceListRequest(
@@ -167,7 +167,7 @@ class SynchronousFlyteClient(_RawSynchronousFlyteClient):
 
         :param flytekit.models.core.identifier.Identifier id: The ID representing a given task.
         :raises: TODO
-        :rtype: flytekit.models.task.Task
+        :rtype: flytekit.models.admin.tasks.Task
         """
         return _task.Task.from_flyte_idl(
             super(SynchronousFlyteClient, self).get_task(_common_pb2.ObjectGetRequest(id=id.to_flyte_idl()))
